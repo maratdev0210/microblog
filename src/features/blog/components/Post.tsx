@@ -7,9 +7,9 @@ export default function Post({
   content: string;
 }) {
   return (
-    <>
-      <h2>{title}</h2>
-      <p>{content}</p>
-    </>
+    <div className=" text-left w-[90%]">
+      <h2 className="text-black">{title}</h2>
+      <p className="text-gray-700 pt-1">{content}</p>
+    </div>
   );
 }

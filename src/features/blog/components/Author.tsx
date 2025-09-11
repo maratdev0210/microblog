@@ -27,9 +27,11 @@ export default function Author({ userId }: { userId: number }) {
   }, []);
 
   return (
-    <>
-      <p>name: {author?.name}</p>
-      <p>email: {author?.email}</p>
-    </>
+    <div className="*:block *:cursor-pointer">
+      <span className=" text-black font-bold m-0 p-0">{author?.name}</span>
+      <span className="text-gray-500 text-sm relative bottom-1.5">
+        {author?.email.toLocaleLowerCase()}
+      </span>
+    </div>
   );
 }

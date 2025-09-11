@@ -1,8 +1,8 @@
 import type { Blog } from "../../../types/blog";
 
-export async function getBlogs(userId: number): Promise<Blog[]> {
+export async function getBlogs(): Promise<Blog[]> {
   const response = await fetch(
-    "https://jsonplaceholder.typicode.com/posts?userId=1"
+    "https://jsonplaceholder.typicode.com/posts"
   );
 
   if (!response.ok) {

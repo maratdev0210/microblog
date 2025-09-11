@@ -5,13 +5,15 @@ import Post from "./Post";
 export default function Card({
   title,
   content,
+  userId,
 }: {
   title: string;
   content: string;
+  userId: number;
 }) {
   return (
-    <div>
-      <Author userId={1} />
+    <div className="w-1/3 m-auto border-1 p-4 rounded-xl shadow-md border-gray-100/50">
+      <Author userId={userId} />
       <Post title={title} content={content} />
     </div>
   );

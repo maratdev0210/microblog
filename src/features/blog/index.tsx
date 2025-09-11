@@ -8,8 +8,9 @@ export default function Blog() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
 
   useEffect(() => {
-    getBlogs(1)
+    getBlogs()
       .then((response) => {
+        console.log(response);
         setBlogs(response);
       })
       .catch((err: unknown) => {
@@ -21,12 +22,20 @@ export default function Blog() {
   }, []);
 
   return (
-    <>
+    <div>
       {loading && <div>this is currently loading</div>}
       <div>this is a blog page</div>
-      {blogs.map((blog) => {
-        return <Card key={blog.id} title={blog.title} content={blog.body} />;
+      {blogs.slice(0, 1).map((blog) => {
+        return (
+          <Card 
+            key={blog.id}
+            userId={blog.userId}
+            title={blog.title}
+            content={blog.body}
+            
+          />
+        );
       })}
-    </>
+    </div>
   );
 }
