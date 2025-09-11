@@ -1,16 +1,17 @@
 import { getBlogs } from "./api/blog";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { PageContext } from "../../context/blog/PageContext";
 import type { Blog } from "../../types/blog";
 import Card from "./components/Card";
 
 export default function Blog() {
   const [loading, setLoading] = useState<boolean>(true);
   const [blogs, setBlogs] = useState<Blog[]>([]);
+  const page = useContext(PageContext);
 
   useEffect(() => {
     getBlogs()
       .then((response) => {
-        console.log(response);
         setBlogs(response);
       })
       .catch((err: unknown) => {
@@ -25,14 +26,14 @@ export default function Blog() {
     <div>
       {loading && <div>this is currently loading</div>}
       <div>this is a blog page</div>
-      {blogs.slice(0, 1).map((blog) => {
+      {/* show the next 10 blogs on a current page */}
+      {blogs.slice(page * 10, (page + 1) * 10).map((blog) => {
         return (
-          <Card 
+          <Card
             key={blog.id}
             userId={blog.userId}
             title={blog.title}
             content={blog.body}
-            
           />
         );
       })}
